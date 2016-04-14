@@ -1,0 +1,60 @@
+{
+  "project": "taco",
+  "services": [
+    {
+      "id": "web",
+      "apps": [
+        {
+          "id": "node",
+          "domain": {
+            "type": "HTTP",
+            "uri": "web-$domain"
+          },
+          "mem": 128,
+          "image": "arealmaas/taco-web",
+          "instances": 1,
+          "port_mappings": [
+            {
+              "container_port": 5000
+            }
+          ],
+          "env": {
+            "MESSAGE": "Taco is the best"
+          },
+          "dependencies": [
+            "../redis"
+          ]
+        },
+        {
+          "id": "redis",
+          "mem": 32,
+          "image": "redis",
+          "instances": 1
+        }
+      ]
+    },
+    {
+      "id": "embed",
+      "apps": [
+        {
+          "id": "node",
+          "domain": {
+            "type": "HTTP",
+            "uri": "embed-$domain"
+          },
+          "mem": 128,
+          "image": "arealmaas/taco-embed",
+          "instances": 1,
+          "port_mappings": [
+            {
+              "container_port": 5000
+            }
+          ],
+          "env": {
+            "MESSAGE": "Taco is the best"
+          }
+        }
+      ]
+    }
+  ]
+}

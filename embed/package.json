@@ -1,0 +1,14 @@
+{
+  "name": "embed",
+  "version": "1.0.0",
+  "description": "I got some embed for ya",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
