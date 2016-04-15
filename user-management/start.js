@@ -25,7 +25,7 @@ function createUser(req, res) {
     res.send(user);
 }
 
-app.post('/users', getUsers);
+app.post('/users', createUser);
 
 function getUsersById(req, res) {
     let id = req.params.id;
