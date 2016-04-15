@@ -15,10 +15,17 @@ function getUsers(req, res) {
 app.get('/users', getUsers);
 
 function createUser(req, res) {
-    //TODO: Create user yolo
+    if (!req.body || !req.body.email) {
+        req.status = 403;
+        return res.send('FAIL');
+    }
+
+    let user = {email: req.body.email, name: req.body.name};
+    users.push(user);
+    res.send(user);
 }
 
-app.get('/users', getUsers);
+app.post('/users', getUsers);
 
 function getUsersById(req, res) {
     let id = req.params.id;
@@ -34,5 +41,5 @@ function getUsersById(req, res) {
 app.get('/users/:id', getUsersById);
 
 app.listen(5000, function () {
-    console.log('Photo listening on port 5000!');
+    console.log('User management listening on port 5000!');
 });
