@@ -1,15 +1,17 @@
 {
-  "name": "user-management",
-  "version": "1.0.0",
-  "description": "I got some users for ya",
-  "main": "index.js",
+  "name": "vamp-test",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "gulp test"
+    "start": "node ./bin/www"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.13.4",
-    "lodash": "^4.11.1"
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "express": "~4.13.1",
+    "jade": "~1.11.0",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0"
   }
 }
