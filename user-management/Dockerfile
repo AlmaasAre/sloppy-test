@@ -1,10 +1,10 @@
 FROM mhart/alpine-node:5
 
-RUN mkdir -p opt/src
+ADD *.js *.json **/*.js **/*.json code/
 
-ADD *.js opt/src/
+WORKDIR /code
 
-RUN cd opt/src && npm install
+RUN npm install
 
 EXPOSE 3000
 
