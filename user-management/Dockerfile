@@ -6,4 +6,6 @@ ADD *.js opt/src/
 
 RUN cd opt/src && npm install
 
+EXPOSE 3000
+
 ENTRYPOINT ['node', 'start.js']
