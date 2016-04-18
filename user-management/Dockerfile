@@ -1,6 +1,11 @@
 FROM mhart/alpine-node:5
 
-ADD *.js *.json **/*.js **/*.json code/
+ADD bin code/bin
+ADD public code/public
+ADD routes code/routes
+ADD views code/views
+
+ADD *.js *.json code/
 
 WORKDIR /code
 
@@ -8,4 +13,6 @@ RUN npm install
 
 EXPOSE 3000
 
-ENTRYPOINT ['node', 'start.js']
+RUN ls
+
+CMD npm start
