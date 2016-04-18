@@ -8,6 +8,7 @@ block content
     input(type='text', id='name', placeholder='Name', required=true)
     button(id='submit') Create user
     button(id='users') Show users
+    button(id='wat') wat?
 
   script(type='text/javascript').
     var submitButton = document.getElementById('submit');
@@ -39,4 +40,9 @@ block content
     var showUsersButton = document.getElementById('users');
     showUsersButton.onclick = function () {
       window.open('/users', '_blank');
+    };
+
+    var watButton = document.getElementById('wat');
+    watButton.onclick = function () {
+      alert('wat');
     };
