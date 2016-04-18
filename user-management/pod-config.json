@@ -1,0 +1,41 @@
+{
+  "kind": "Pod",
+  "apiVersion": "v1",
+  "metadata": {
+    "labels": {
+      "name": "v1"
+    },
+    "generateName": "user-management-",
+    "namespace": "default"
+  },
+  "spec": {
+    "containers": [
+      {
+        "name": "user-management-web-app",
+        "image": "gcr.io/kubernetes-testing-1285/taco-user-management:v1",
+        "env": [
+          {
+            "name": "PORT",
+            "value": "3000"
+          }
+        ],
+        "imagePullPolicy": "Always",
+        "ports": [
+          {
+            "containerPort": 3000,
+            "name": "usermanagement1"
+          }
+        ]
+      }
+    ],
+    "restartPolicy": "OnFailure",
+    "volumes": [
+      {
+        "name": "user-management-volume",
+        "emptyDir": {
+          "medium": ""
+        }
+      }
+    ]
+  }
+}
