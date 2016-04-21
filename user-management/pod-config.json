@@ -5,14 +5,14 @@
     "labels": {
       "name": "v1"
     },
-    "generateName": "user-management-",
+    "generateName": "groovy-user-management-",
     "namespace": "default"
   },
   "spec": {
     "containers": [
       {
         "name": "user-management-web-app",
-        "image": "gcr.io/kubernetes-testing-1285/taco-user-management:v1",
+        "image": "gcr.io/kubernetes-testing-1285/groovy-user-management:v1",
         "env": [
           {
             "name": "PORT",

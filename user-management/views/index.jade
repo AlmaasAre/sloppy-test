@@ -1,48 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  div
-    input(type='email', id='email', placeholder='Email', required=true)
-    input(type='text', id='name', placeholder='Name', required=true)
-    button(id='submit') Create user
-    button(id='users') Show users
-    button(id='wat') wat?
-
-  script(type='text/javascript').
-    var submitButton = document.getElementById('submit');
-    submitButton.onclick = function () {
-      var email = document.getElementById('email');
-      var name = document.getElementById('name');
-
-      var user = {
-        email: email.value,
-        name: name.value
-      };
-
-      var http = new XMLHttpRequest();
-      var url = '/users';
-      http.open('POST', url, true);
-      http.setRequestHeader('Content-type', 'application/json');
-
-      http.onreadystatechange = function () {
-        if (http.status == 200) {
-          email.value = '';
-          name.value = '';
-        } else {
-          alert('Failed to create user');
-        }
-      };
-      http.send(JSON.stringify(user));
-    };
-
-    var showUsersButton = document.getElementById('users');
-    showUsersButton.onclick = function () {
-      window.open('/users', '_blank');
-    };
-
-    var watButton = document.getElementById('wat');
-    watButton.onclick = function () {
-      alert('wat');
-    };
+    h1= title
+    #employees
+        - each employee in employees
+          div.employee
+            div.created_at= employee.created_at
+            div.title= employee.title 
+            div.name= employee.name
+                form( method="post", action="/employee/:id/delete") 
+                    input(name="_id", type="hidden", value=employee._id.toHexString()) 
+                    input(id="delete", value="X", type="submit")
+                form( method="get", action="/employee/:id/edit") 
+                    input(name="_id", type="hidden", value=employee._id.toHexString()) 
+                    input(id="edit", value="Edit", type="submit")
+        a(href="/employee/new")!= "Add New Employee"

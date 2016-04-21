@@ -1,16 +1,9 @@
 FROM mhart/alpine-node:5
 
-ADD bin code/bin
-ADD public code/public
-ADD routes code/routes
-ADD views code/views
+COPY ./app/. ./code
 
-ADD *.js *.json code/
-
-WORKDIR /code
+WORKDIR code
 
 RUN npm install
 
-EXPOSE 3000
-
-CMD npm start
+CMD ["node", "app.js"]
