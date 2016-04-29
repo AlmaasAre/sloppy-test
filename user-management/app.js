@@ -64,7 +64,7 @@ app.post('/employee/new', function(req, res){
 app.get('/employee/:id/edit', function(req, res) {
 	employeeProvider.findById(req.param('_id'), function(error, employee) {
 		res.render('employee_edit',
-		{ 
+		{
 			title: employee.title,
 			employee: employee
 		});

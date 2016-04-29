@@ -3,10 +3,15 @@ var Connection = require('mongodb').Connection;
 var Server = require('mongodb').Server;
 var BSON = require('mongodb').BSON;
 var ObjectID = require('mongodb').ObjectID;
+var redis = require("redis");
+var client = redis.createClient({host:'redis'});
+client.on("error", function (err) {
+  console.log("Error " + err);
+});
 
 EmployeeProvider = function(host, port) {
   this.db= new Db('node-mongo-employee', new Server(host, port, {safe: false}, {auto_reconnect: true}, {}));
-  this.db.open(function(){});
+  this.db.open(function(err){console.log(err)});
 };
 
 
@@ -74,7 +79,7 @@ EmployeeProvider.prototype.update = function(employeeId, employees, callback) {
 					employees,
 					function(error, employees) {
 						if(error) callback(error);
-						else callback(null, employees)       
+						else callback(null, employees)
 					});
       }
     });
