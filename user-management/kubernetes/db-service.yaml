@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-management-mongo
+  labels:
+    app: user-management-mongo
+    tier: db
+spec:
+  ports:
+    # the port that this service should serve on
+  - port: 27017
+    targetPort: 27017
+  selector:
+    app: user-management-mongo
+    tier: db

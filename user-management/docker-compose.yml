@@ -6,7 +6,7 @@ web:
   expose:
      - "3000"
   links:
-   - mongo:mongo
+   - mongo:user-management-mongo
    - redis:redis
 mongo:
   image: mongo

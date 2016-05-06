@@ -1,18 +1,24 @@
 lb:
   image: dockercloud/haproxy
   links:
-    - web
+    - web:web
   ports:
     - "80"
   roles:
     - global
 web:
   image: arealmaas/groovy-user-management
-  command: npm start
   expose:
      - "3000"
   links:
-    - mongo
-  target_num_containers: 4
+    - mongo:mongo
+    - redis:redis
+  roles:
+      - global
+  target_num_containers: 2
 mongo:
   image: mongo
+redis:
+  image: redis
+  expose:
+    - "6379"
